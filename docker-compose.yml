@@ -1,0 +1,47 @@
+version: "3"
+
+volumes:
+  minio-data:
+  mongo-data:
+
+services:
+    mongo:
+      container_name: mongo
+      image: mongo:5.0.3
+      ports:
+        - 27017:27017
+      volumes:
+        - "mongo-data:/data/db"
+      environment:
+        - MONGO_INITDB_DATABASE=test_db
+        - MONGO_INITDB_ROOT_USERNAME=mohsen
+        - MONGO_INITDB_ROOT_PASSWORD=123
+    minio:
+      container_name: minio
+      restart: always
+      build:
+        context: .`
+        dockerfile: ./minio/Dock`erfile
+      volumes:
+        - "minio-data:/data"
+      ports:
+        - "9000:9000"
+      env_file:
+        - .env
+    fs:
+      container_name: fs
+      build:
+        context: ../Minio.py
+        dockerfile: Dockerfile
+      command: [
+       "sh",
+       "-c",
+       "python app.py"]
+      volumes:
+        - ../Minio.py/app:/app
+      ports:
+        - "5002:5000"
+      depends_on:
+        - minio
+      env_file:
+        - .env

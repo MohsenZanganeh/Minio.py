@@ -1,0 +1,124 @@
+{
+   "swagger": "2.0",
+   "info": {
+      "description": "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
+      "version": "1.0.0",
+      "title": "Fs",
+      "contact": null
+   },
+   "basePath": "/api",
+   "tags": [
+      {
+         "name": "Fs",
+         "description": "Everything about your Fs"
+      }
+   ],
+   "paths": {
+      "/fs/{bucket_name}": {
+         "put": {
+            "tags": [
+               "Fs"
+            ],
+            "summary": "Put Your File Do this with Postman",
+            "consumes": [
+               "multipart/form-data"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+               {
+                  "in": "formData",
+                  "name": "file",
+                  "type": "file",
+                  "description": "The file to upload."
+               },
+               {
+                  "in": "path",
+                  "name": "bucket_name",
+                  "type": "string",
+                  "description": "bucket_name of file"
+               }
+            ],
+            "responses": {
+               "201": {
+                  "description": "Created"
+               }
+            }
+         }
+      },
+      "/fs/{file_name}/{bucket_name}": {
+         "get": {
+            "tags": [
+               "Fs"
+            ],
+            "summary": "get File",
+            "consumes": [
+               "application/json"
+            ],
+            "produces": [
+              "multipart/form-data"
+            ],
+            "parameters": [
+               {
+                  "in": "path",
+                  "name": "file_name",
+                  "description": "file_name for get the file",
+                  "schema": {
+                     "type": "string"
+                  }
+               },
+               {
+                  "in": "path",
+                  "name": "bucket_name",
+                  "description": "bucket_name for get the file",
+                  "schema": {
+                     "type": "string"
+                  }
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "get file"
+               }
+            }
+         },
+
+         "delete": {
+            "tags": [
+               "Fs"
+            ],
+            "summary": "Delete Your File Do this with Postman",
+            "consumes": [
+               "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+               {
+                  "in": "path",
+                  "name": "file_name",
+                  "description": "file_name for get the file",
+                  "schema": {
+                     "type": "string"
+                  }
+               },
+               {
+                  "in": "path",
+                  "name": "bucket_name",
+                  "description": "bucket_name for get the file",
+                  "schema": {
+                     "type": "string"
+                  }
+               }
+            ],
+            "responses": {
+               "201": {
+                  "description": "delete file"
+               }
+            }
+         }
+      }
+   }
+}
