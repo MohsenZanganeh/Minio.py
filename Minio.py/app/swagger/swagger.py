@@ -11,9 +11,7 @@ swagger = {
         "contact": "null",
         "description": "Apis"
         f'''
-       <a href="http://{SERVER_URL}:5002/api/docs">User Service</a>
-       <a href="http://{SERVER_URL}:5003/api/docs">Product Service</a>
-       <a href="http://{SERVER_URL}:5004/api/docs">Fs Service</a>
+       <a href="http://{SERVER_URL}:5002/api/docs">Fs Service</a>
        '''
     },
     "paths": {
@@ -43,9 +41,6 @@ swagger = {
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "owner_id": {
-                                        "type": "string"
-                                    },
                                     "file": {
                                         "type": "array",
                                         "items": {
@@ -65,7 +60,7 @@ swagger = {
                 }
             }
         },
-        "/fs/download/{owner_id}/{file_name}/{bucket_name}": {
+        "/fs/download/{file_name}/{bucket_name}": {
             "get": {
                 "tags": [
                     "Fs"
@@ -78,14 +73,6 @@ swagger = {
                     "multipart/form-data"
                 ],
                 "parameters": [
-                    {
-                        "in": "path",
-                        "name": "owner_id",
-                        "description": "file_name for get the file",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
                     {
                         "in": "path",
                         "name": "file_name",
@@ -110,7 +97,7 @@ swagger = {
                 }
             }
         },
-        "/fs/{owner_id}/{file_name}/{bucket_name}": {
+        "/fs/{file_name}/{bucket_name}": {
             "get": {
                 "tags": [
                     "Fs"
@@ -123,14 +110,6 @@ swagger = {
                     "multipart/form-data"
                 ],
                 "parameters": [
-                    {
-                        "in": "path",
-                        "name": "owner_id",
-                        "description": "file_name for get the file",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
                     {
                         "in": "path",
                         "name": "file_name",

@@ -9,7 +9,7 @@ import uuid
 class PutFileUseCase():
     def __init__(self):
         self.fs = db().fs()
-    def putFile(self,bucket_name,files,owner_id):
+    def putFile(self,bucket_name,files):
         fs_service = FsService()
         links = []
         for index,file in enumerate(files):
@@ -30,11 +30,10 @@ class PutFileUseCase():
                 'order':order,
                 'filename':hashed_name,
                 'title': filename,
-                'bucket_name':bucket_name,
-                'owner_id':owner_id
+                'bucket_name':bucket_name
             })
 
-            link = fs_service.putObject(bucket_name,image,f"{owner_id}/{hashed_name}",content_type)
+            link = fs_service.putObject(bucket_name,image,f"{hashed_name}",content_type)
             links.append({
                 'filename':hashed_name,
                 'title':filename,

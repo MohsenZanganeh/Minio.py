@@ -1,4 +1,3 @@
-
 from src.application.v1.fs.PutFileUseCase import PutFileUseCase
 from src.interface.rest.modules.baseResource import baseResource
 from flask import request   
@@ -21,5 +20,4 @@ class FsPutResource(baseResource):
         files = fs_file_schema(self.files)
         # UseCase
         return PutFileUseCase().putFile(self.query['bucket_name'],
-                                      files=files,
-                                      owner_id=fs_json['owner_id'])
+                                      files=files)

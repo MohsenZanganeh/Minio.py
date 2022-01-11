@@ -9,7 +9,7 @@ class FsGetFileResource(baseResource):
     def __init__(self):
         super().__init__()
 
-    def get(self,bucket_name,owner_id,file_name):
+    def get(self,bucket_name,file_name):
         # Validation
         fs_json = self.query
         if fs_json:

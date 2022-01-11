@@ -38,9 +38,9 @@ class FsService():
         except InvalidResponseError as identifier:
             raise identifier
 
-    def getObject(self, bucket_name, file_name,file_path):
+    def getObject(self, bucket_name, file_name):
         try:
-            response = self.client.get_object(bucket_name, f'{file_path}/{file_name}')
+            response = self.client.get_object(bucket_name, f'{file_name}')
             return response
             # Read data from response.
         except:

@@ -20,8 +20,8 @@ services:
       container_name: minio
       restart: always
       build:
-        context: .`
-        dockerfile: ./minio/Dock`erfile
+        context: .
+        dockerfile: ./minio/Dockerfile
       volumes:
         - "minio-data:/data"
       ports:
@@ -31,14 +31,15 @@ services:
     fs:
       container_name: fs
       build:
-        context: ../Minio.py
+        context: ./Minio.py
         dockerfile: Dockerfile
+      restart: always
       command: [
        "sh",
        "-c",
        "python app.py"]
       volumes:
-        - ../Minio.py/app:/app
+        - ./Minio.py/app:/app
       ports:
         - "5002:5000"
       depends_on:

@@ -11,7 +11,3 @@ MONGO = {
     'username':'mohsen',
     'password':'123'
 }
-
-TOPICS = ['broker_fs']
-
-TOPICS = {'fs':'fs'}

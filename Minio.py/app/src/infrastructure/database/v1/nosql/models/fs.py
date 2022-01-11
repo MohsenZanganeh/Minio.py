@@ -27,19 +27,9 @@ def Create_Fs_Schema(db):
                     'bsonType': 'string',
                     'description': 'recognizing the product type'
                 },
-                'owner_id':{
-                    'bsonType': 'string',
-                    'description': 'recognizing the product type'
-                },
                 'is_active': {
                     'bsonType': 'bool',
                     'description': 'recognizing record is active or not'
-                },
-                'created_by':{
-                    'bsonType': 'objectId',
-                },
-                'updated_by':{
-                    'bsonType': 'objectId',
                 },
                 'is_deleted': {
                     'bsonType': 'bool',

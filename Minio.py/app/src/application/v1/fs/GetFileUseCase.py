@@ -4,5 +4,5 @@ class GetFileUseCase():
 
     def GetFile(self,**query):
         fs_service = FsService()
-        get_object = fs_service.getObject(query['bucket_name'],query['file_name'],query['owner_id'])
+        get_object = fs_service.getObject(query['bucket_name'],query['file_name'])
         return get_object
